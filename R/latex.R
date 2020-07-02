@@ -8,7 +8,7 @@
 #' The \command{latexmk} emulation works like this: run the LaTeX engine once
 #' (e.g., \command{pdflatex}), run \command{makeindex} to make the index if
 #' necessary (the \file{*.idx} file exists), run the bibliography engine
-#' \command{bibtex} or \command{biber} to make the bibliography if necessary
+#' \command{bibtex}, \command{upbibtex} or \command{biber} to make the bibliography if necessary
 #' (the \file{*.aux} or \file{*.bcf} file exists), and finally run the LaTeX
 #' engine a number of times (the maximum is 10 by default) to resolve all
 #' cross-references.
@@ -65,7 +65,7 @@
 #'   the \code{pdf_file} argument).
 latexmk = function(
   file, engine = c('pdflatex', 'xelatex', 'lualatex', 'latex'),
-  bib_engine = c('bibtex', 'biber'), engine_args = NULL, emulation = TRUE,
+  bib_engine = c('bibtex', 'biber', "upbibtex"), engine_args = NULL, emulation = TRUE,
   min_times = 1, max_times = 10, install_packages = emulation && tlmgr_available(),
   pdf_file = gsub('tex$', 'pdf', file), clean = TRUE
 ) {
